@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h1>PDF Merger</h1>
+            </div>
+            <div class="card-body">
+                <p class="text-center">Select multiple PDF files to merge them into one.</p>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="pdfFiles" accept="application/pdf" multiple>
+                    <label class="custom-file-label" for="pdfFiles">Choose files</label>
+                </div>
+                <ul id="fileList" class="list-group mt-3"></ul>
+                <div class="text-center mt-3">
+                    <button class="btn btn-primary" id="mergeBtn" disabled>Merge PDFs</button>
+                </div>
+                <div class="text-center mt-3" id="downloadLinkContainer" style="display: none;">
+                    <a href="#" id="downloadLink" class="btn btn-success">Download Merged PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/sortablejs/Sortable.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
