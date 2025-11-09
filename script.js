@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
+    const compressPdfCheckbox = document.getElementById('compressPdf');
+    let convertApi = ConvertApi.auth({secret: '95Ie4t34B1az682d'});
+
     mergeBtn.addEventListener('click', async () => {
         if (files.length < 2) {
             return;
@@ -58,11 +61,20 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const mergedPdfBytes = await mergedPdf.save();
-        const mergedPdfBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(mergedPdfBlob);
+        
+        if (compressPdfCheckbox.checked) {
+            let params = convertApi.createParams();
+            params.add('file', new File([mergedPdfBytes], 'merged.pdf'));
+            let result = await convertApi.convert('pdf', 'compress', params);
+            downloadLink.href = result.files[0].Url;
+            downloadLink.download = result.files[0].FileName;
+        } else {
+            const mergedPdfBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(mergedPdfBlob);
+            downloadLink.href = url;
+            downloadLink.download = 'merged.pdf';
+        }
 
-        downloadLink.href = url;
-        downloadLink.download = 'merged.pdf';
         downloadLinkContainer.style.display = 'block';
     });
 });

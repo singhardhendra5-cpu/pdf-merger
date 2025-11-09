@@ -23,6 +23,12 @@
                 <div class="text-center mt-3">
                     <button class="btn btn-primary" id="mergeBtn" disabled>Merge PDF</button>
                 </div>
+                <div class="text-center mt-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="compressPdf">
+                        <label class="custom-control-label" for="compressPdf">Compress PDF</label>
+                    </div>
+                </div>
                 <div class="text-center mt-3" id="downloadLinkContainer" style="display: none;">
                     <a href="#" id="downloadLink" class="btn btn-success">Download Merged PDF</a>
                 </div>
@@ -30,6 +36,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/convertapi-js/lib/convertapi.js"></script>
     <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
     <script src="https://unpkg.com/sortablejs/Sortable.min.js"></script>
     <script src="script.js"></script>
